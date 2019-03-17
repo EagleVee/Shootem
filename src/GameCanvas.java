@@ -1,4 +1,11 @@
-import control.ObjectManager;
+import base.GameObjectManager;
+import game.background.Background;
+import game.enemy.CreateEnemy;
+import game.enemyfollow.CreateEnemyFollow;
+import game.player.Player;
+import game.star.CreateStar;
+import scene.GamePlayScene;
+import scene.SceneManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,12 +23,11 @@ public class GameCanvas extends JPanel {
 
         this.setupBackBuffered();
 
+        SceneManager.instance.changeScene(new GamePlayScene());
+
         this.setVisible(true);
     }
 
-    /**
-     * Set up backBuffered to render next frame
-     */
     private void setupBackBuffered() {
         this.backBuffered = new BufferedImage(1024, 600, BufferedImage.TYPE_INT_ARGB);
         this.graphics = this.backBuffered.getGraphics();
@@ -33,11 +39,12 @@ public class GameCanvas extends JPanel {
     }
 
     public void renderAll() {
-        ObjectManager.instance.renderAll(this.graphics);
+        GameObjectManager.instance.renderAll(this.graphics);
         this.repaint();
     }
 
     public void runAll() {
-        ObjectManager.instance.runAll();
+        GameObjectManager.instance.runAll();
+        SceneManager.instance.performChangeSceneIfNeeded();
     }
 }

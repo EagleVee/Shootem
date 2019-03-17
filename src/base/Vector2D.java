@@ -1,5 +1,8 @@
-package control;
+package base;
 
+/**
+ * A class to calculate Vectors interaction in 2D
+ */
 public class Vector2D {
 
     public float x;

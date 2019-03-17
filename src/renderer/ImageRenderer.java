@@ -1,6 +1,6 @@
 package renderer;
 
-import control.Vector2D;
+import base.Vector2D;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class ImageRenderer implements Renderer{
+public class ImageRenderer implements Renderer {
 
     private BufferedImage image;
     private int width;
@@ -27,6 +27,7 @@ public class ImageRenderer implements Renderer{
             return null;
         }
     }
+
     @Override
     public void render(Graphics graphics, Vector2D position) {
         graphics.drawImage(
